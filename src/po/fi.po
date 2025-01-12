@@ -1325,8 +1325,8 @@ msgstr " Käyttäjän määrittelemä täydennys (^U^N^P)"
 msgid " Omni completion (^O^N^P)"
 msgstr " Omnitäydennys (^O^N^P)"
 
-msgid " Spelling suggestion (s^N^P)"
-msgstr " Oikaisulukuehdotus (s^N^P)"
+msgid " Spelling suggestion (^S^N^P)"
+msgstr " Oikaisulukuehdotus (^S^N^P)"
 
 msgid " Keyword Local completion (^N^P)"
 msgstr " Avainsanan paikallinen täydennys (^N^P)"
@@ -2206,7 +2206,7 @@ msgstr "Virhe suoritettaessa komentoja %s:"
 msgid "line %4ld:"
 msgstr "rivi %4ld:"
 
-msgid "Messages maintainer: Bram Moolenaar <Bram@vim.org>"
+msgid "Messages maintainer: The Vim Project"
 msgstr "Käännöksen ylläpitäjä: Flammie Pirinen <flammie@iki.fi>"
 
 msgid "Interrupt: "

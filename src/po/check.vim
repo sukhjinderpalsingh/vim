@@ -30,8 +30,15 @@ func! GetMline()
   " remove '%' used for plural forms.
   let idline = substitute(idline, '\\nPlural-Forms: .\+;\\n', '', '')
 
+  " remove duplicate positional format arguments
+  let idline2 = ""
+  while idline2 != idline
+    let idline2 = idline
+    let idline = substitute(idline, '%\([1-9][0-9]*\)\$\([-+ #''.*]*[0-9]*l\=[dsuxXpoc%]\)\(.*\)%\1$\([-+ #''.*]*\)\(l\=[dsuxXpoc%]\)', '%\1$\2\3\4', 'g')
+  endwhile
+
   " remove everything but % items.
-  return substitute(idline, '[^%]*\(%[-+ #''.0-9*]*l\=[dsuxXpoc%]\)\=', '\1', 'g')
+  return substitute(idline, '[^%]*\(%([1-9][0-9]*\$)\=[-+ #''.0-9*]*l\=[dsuxXpoc%]\)\=', '\1', 'g')
 endfunc
 
 " This only works when 'wrapscan' is not set.
@@ -219,6 +226,15 @@ elseif ctu
   " endif
 endif
 
+" Check that no lines are longer than 80 chars (except comments)
+let overlong = search('^[^#]\%>80v', 'n')
+if overlong > 0
+  echomsg "Lines should be wrapped at 80 columns"
+  " TODO: make this an error
+  " if error == 0
+  "   let error = overlong
+  " endif
+endif
 
 if error == 0
   " If all was OK restore the view.
